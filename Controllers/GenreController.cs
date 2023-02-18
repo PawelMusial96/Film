@@ -35,8 +35,9 @@ namespace Film.Controllers
                     return View(model);
                 }
             }
-
-            public IActionResult Edit(int id)
+        //
+        //[Authorize(Roles = "admin")]
+        public IActionResult Edit(int id)
             {
                 var data = _genreService.GetById(id);
                 return View(data);

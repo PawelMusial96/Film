@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Film.Models.DTO;
 using Film.Repositories.Abstract;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace Film.Controllers
 {
@@ -18,22 +18,6 @@ namespace Film.Controllers
           If you need other users ,you can implement this registration method with view
           I have create a complete tutorial for this, you can check the link in description box
          */
-
-        public async Task<IActionResult> Register()
-        {
-            var model = new RegistrationModel
-            {
-                Email = "pawel@gmail.com",
-                Username = "admin",
-                Name = "Paweł",
-                Password = "Admin@123",
-                PasswordConfirm = "Admin@123",
-                Role = "Admin"
-            };
-            // if you want to register with user , Change Role="User"
-            var result = await authService.RegisterAsync(model);
-            return Ok(result.Message);
-        }
 
         public async Task<IActionResult> Login()
         {
@@ -56,11 +40,42 @@ namespace Film.Controllers
             }
         }
 
+        public IActionResult Registration()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Registration(RegistrationModel model)
+        {
+            if (!ModelState.IsValid) { return View(model); }
+            model.Role = "user";
+            var result = await this.authService.RegisterAsync(model);
+            TempData["msg"] = result.Message;
+            return RedirectToAction(nameof(Registration));
+        }
+
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await authService.LogoutAsync();
             return RedirectToAction(nameof(Login));
         }
 
+        //public async Task<IActionResult> Reg()
+        //{
+        //    var model = new RegistrationModel
+        //    {
+        //        Email = "pawel@gmail.com",
+        //        Username = "admin",
+        //        Name = "Paweł",
+        //        Password = "Admin@123",
+        //        PasswordConfirm = "Admin@123",
+        //        Role = "Admin"
+        //    };
+        //    if you want to register with user , Change Role = "User"
+        //    var result = await authService.RegisterAsync(model);
+        //    return Ok(result.Message);
+        //}
     }
 }

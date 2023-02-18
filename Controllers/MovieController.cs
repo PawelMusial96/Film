@@ -54,7 +54,7 @@ namespace Film.Controllers
                 return View(model);
             }
         }
-
+        //[Authorize(Roles = "admin")]
         public IActionResult Edit(int id)
         {
             var model = _movieService.GetById(id);
@@ -63,7 +63,7 @@ namespace Film.Controllers
             model.MultiGenreList = multiGenreList;
             return View(model);
         }
-
+        //[Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult Edit(Movie model)
         {

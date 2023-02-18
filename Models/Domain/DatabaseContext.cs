@@ -12,5 +12,7 @@ namespace Film.Models.Domain
         public DbSet<Genre> Genre { get; set; }
         public DbSet<MovieGenre> MovieGenre { get; set; }
         public DbSet<Movie> Movie { get; set; }
+
+        public DbSet<Book> Book { get; set; }
     }
 }
