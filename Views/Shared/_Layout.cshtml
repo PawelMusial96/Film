@@ -24,9 +24,21 @@
         </div>
         <ul class="nav-link">
             <li><a class="active" href="/Home/Index">Home</a></li>
-            <li><a href="/Books/BookList">Movie</a></li>
+            <li><a href="/Books/Index">Movie</a></li>
             
-            @if (!string.IsNullOrEmpty(username))
+            @if (User.IsInRole("user"))
+            {
+                <li>
+                    <a href="#">User <i class="fa fa-caret-down"></i></a>
+
+                    <ul class="dropdown-nav-link">
+                        <li><a href="/Genre/Add">Genre</a></li>
+                        <li><a href="/Movie/Add">Movie</a></li>
+                        <li><a href="/UserAuthentication/Logout">Logout</a></li>
+                    </ul>
+                </li>
+            }
+            @if (User.IsInRole("admin"))
             {
                 <li>
                     <a href="#">Admin <i class="fa fa-caret-down"></i></a>
@@ -38,6 +50,19 @@
                     </ul>
                 </li>
             }
+            @*@if (!string.IsNullOrEmpty(username))
+            {
+                <li>
+                    <a href="#">User <i class="fa fa-caret-down"></i></a>
+
+                    <ul class="dropdown-nav-link">
+                        <li><a href="/Genre/Add">Genre</a></li>
+                        <li><a href="/Movie/Add">Movie</a></li>
+                        <li><a href="/UserAuthentication/Logout">Logout</a></li>
+                    </ul>
+                </li>
+            }*@
+            
 
             @if (string.IsNullOrEmpty(username))
             {
@@ -51,5 +76,6 @@
     <footer>
         &#169; Paweł Musiał Nr.Albumu 13759
     </footer>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

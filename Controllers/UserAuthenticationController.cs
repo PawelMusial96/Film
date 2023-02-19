@@ -40,6 +40,20 @@ namespace Film.Controllers
             }
         }
 
+        public async Task<IActionResult> RegisterAdmin()
+        {
+            RegistrationModel model = new RegistrationModel
+            {
+                Username = "admin",
+                Email = "admin@gmail.com",
+                Name = "John",
+                Password = "Admin@123",
+                PasswordConfirm = "Admin@123"
+            };
+            model.Role = "admin";
+            var result = await this.authService.RegisterAsync(model);
+            return Ok(result);
+        }
         public IActionResult Registration()
         {
             return View();
@@ -62,20 +76,23 @@ namespace Film.Controllers
             return RedirectToAction(nameof(Login));
         }
 
-        //public async Task<IActionResult> Reg()
-        //{
-        //    var model = new RegistrationModel
-        //    {
-        //        Email = "pawel@gmail.com",
-        //        Username = "admin",
-        //        Name = "Paweł",
-        //        Password = "Admin@123",
-        //        PasswordConfirm = "Admin@123",
-        //        Role = "Admin"
-        //    };
-        //    if you want to register with user , Change Role = "User"
-        //    var result = await authService.RegisterAsync(model);
-        //    return Ok(result.Message);
-        //}
+        public async Task<IActionResult> Reg()
+        {
+            var model = new RegistrationModel
+            {
+                Email = "pawel@gmail.com",
+                Username = "admin",
+                Name = "Paweł",
+                Password = "Admin@123",
+                PasswordConfirm = "Admin@123",
+
+            };
+            model.Role = "admin";
+            var result = await authService.RegisterAsync(model);
+            return Ok(result);
+        }
+
+
+
     }
 }

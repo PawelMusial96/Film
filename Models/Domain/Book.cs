@@ -10,7 +10,7 @@ namespace Film.Models
         public string Tytul { get; set; }
 
         [Required(ErrorMessage = "Zapomniałeś o Autorze")]
-        public string Autor { get; set; }
+        public string Rezyser { get; set; }
 
         [Required(ErrorMessage = "Zapomniałeś o Opise")]
         public string Opis { get; set; }
