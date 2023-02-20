@@ -7,17 +7,24 @@ Aplikacja dla kinomaniaka to projekt ASP.NET, który umożliwia zarządzanie lis
 --------URUCHAMIANIE-------
 
 Aby móc skorzystać z projektu Film, potrzebujemy środowiska z zainstalowanym .NET i Microsoft SQL Server. W projekcie zostały użyte różne biblioteki, w tym EntityFrameworkCore, Web.
+
 Aby skompilować i uruchomić aplikację, należy najpierw pobrać i zainstalować wymagane biblioteki przy użyciu menedżera pakietów NuGet. Następnie należy skonfigurować połączenie z bazą danych w pliku konfiguracyjnym, aby umożliwić aplikacji dostęp do bazy.
 Projekt należy sklonować z Githuba: https://github.com/PawelMusial96/Film
 Aby skonfigurować projekt Film, należy najpierw ustawić połączenie z bazą danych w pliku appsettings.json. W celu połączenia z bazą danych Microsoft SQL Server, należy zmodyfikować na podstawie swoich potrzeb. Przykładowa konfiguracja wygląda następująco:
+
 "data source=PAWEŁ; initial catalog=Film; integrated security=true"
-data source =; initial catalog =;Trusted_Connection=True; Integrated Security=true; Należy zastąpić odpowiednim adresem serwera bazy danych, a - nazwą bazy danych, którą chcemy utworzyć lub wykorzystać.
+
+data source =; initial catalog =;Trusted_Connection=True; Integrated Security=true; 
+Należy zastąpić odpowiednim adresem serwera bazy danych, a - nazwą bazy danych, którą chcemy utworzyć lub wykorzystać.
+
 Aby uruchomić projekt, należy zainstalować menedżer pakietów NuGet i dodać migracje, które umożliwią utworzenie bazy danych. Można to zrobić za pomocą konsoli menedżera pakietów NuGet, wpisując następujące polecenia:
+
 Add-Migration Update-Database Po wykonaniu tych kroków, baza danych zostanie utworzona, a aplikacja będzie gotowa do użycia.
 
 ---------UŻYTKOWNICY I ROLE--------
 
 W projekcie aplikacji dla kinomaniaka dostępne jest konto użytkownika służące do testowania funkcjonalności systemu logowania. Poniżej przedstawione są informacje o tych użytkownikach:
+
 Użytkownik (rola "User") • Name:  Jan • Email: user@example.com • UserName: JanKowal • Password: password123!  • PasswordConfirm: password123!
 Powyższe dane, są jedynie danymi testowymi.
 
