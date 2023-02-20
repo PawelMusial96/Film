@@ -122,6 +122,8 @@
     filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
     background-repeat: repeat-x;
     border-color: #245580;
+    color: #fff;
+    border-color: #1861ac;
 }
 
     .btn-primary:hover,
